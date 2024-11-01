@@ -1,0 +1,108 @@
+Subject: [PATCH] fix clan hall teleport
+---
+Index: L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/BronzeChamber.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/BronzeChamber.xml b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/BronzeChamber.xml
+--- a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/BronzeChamber.xml	(revision 921506b004662254200c9ec428df6e60b6a4c25f)
++++ b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/BronzeChamber.xml	(revision 4f51858e7f45b7e65b9d3b3a49c1bdf24fd869d5)
+@@ -11,6 +11,6 @@
+ 			<door id="22220006" />
+ 		</doorlist>
+ 		<ownerRestartPoint x="80960" y="151600" z="-3517" />
+-		<banishPoint x="83409" y="148578" z="-3300" />
++		<banishPoint x="81422" y="151604" z="-3532" />
+ 	</clanHall>
+ </list>
+\ No newline at end of file
+Index: L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/GoldenChamber.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/GoldenChamber.xml b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/GoldenChamber.xml
+--- a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/GoldenChamber.xml	(revision 921506b004662254200c9ec428df6e60b6a4c25f)
++++ b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/GoldenChamber.xml	(revision 4f51858e7f45b7e65b9d3b3a49c1bdf24fd869d5)
+@@ -11,6 +11,6 @@
+ 			<door id="22220007" />
+ 		</doorlist>
+ 		<ownerRestartPoint x="78592" y="148080" z="-3581" />
+-		<banishPoint x="83409" y="148578" z="-3300" />
++		<banishPoint x="78568" y="148589" z="-3596" />
+ 	</clanHall>
+ </list>
+\ No newline at end of file
+Index: L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/MithrilChamber.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/MithrilChamber.xml b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/MithrilChamber.xml
+--- a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/MithrilChamber.xml	(revision 921506b004662254200c9ec428df6e60b6a4c25f)
++++ b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/MithrilChamber.xml	(revision 4f51858e7f45b7e65b9d3b3a49c1bdf24fd869d5)
+@@ -11,6 +11,6 @@
+ 			<door id="22220012" />
+ 		</doorlist>
+ 		<ownerRestartPoint x="83392" y="145328" z="-3389" />
+-		<banishPoint x="83409" y="148578" z="-3300" />
++		<banishPoint x="83844" y="145344" z="-3404" />
+ 	</clanHall>
+ </list>
+\ No newline at end of file
+Index: L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/SilverChamber.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/SilverChamber.xml b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/SilverChamber.xml
+--- a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/SilverChamber.xml	(revision 921506b004662254200c9ec428df6e60b6a4c25f)
++++ b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/SilverChamber.xml	(revision 4f51858e7f45b7e65b9d3b3a49c1bdf24fd869d5)
+@@ -11,6 +11,6 @@
+ 			<door id="22220009" />
+ 		</doorlist>
+ 		<ownerRestartPoint x="82032" y="145328" z="-3520" />
+-		<banishPoint x="83409" y="148578" z="-3300" />
++		<banishPoint x="81551" y="145309" z="-3532" />
+ 	</clanHall>
+ </list>
+\ No newline at end of file
+Index: L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/SilverManor.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/SilverManor.xml b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/SilverManor.xml
+--- a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/SilverManor.xml	(revision 921506b004662254200c9ec428df6e60b6a4c25f)
++++ b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Giran/SilverManor.xml	(revision 4f51858e7f45b7e65b9d3b3a49c1bdf24fd869d5)
+@@ -11,6 +11,6 @@
+ 			<door id="22220003" />
+ 		</doorlist>
+ 		<ownerRestartPoint x="82064" y="151904" z="-3515" />
+-		<banishPoint x="83409" y="148578" z="-3300" />
++		<banishPoint x="81621" y="151889" z="-3532" />
+ 	</clanHall>
+ </list>
+\ No newline at end of file
+Index: L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Gludio/SapphireHall.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Gludio/SapphireHall.xml b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Gludio/SapphireHall.xml
+--- a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Gludio/SapphireHall.xml	(revision 921506b004662254200c9ec428df6e60b6a4c25f)
++++ b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/residences/clanHalls/Gludio/SapphireHall.xml	(revision 4f51858e7f45b7e65b9d3b3a49c1bdf24fd869d5)
+@@ -8,9 +8,9 @@
+ 		</npcs>
+ 		<doorlist>
+ 			<door id="19210113" />
+-			<door id="19210014" />
++			<door id="19210114" />
+ 		</doorlist>
+ 		<ownerRestartPoint x="-28048" y="120800" z="-3706" />
+-		<banishPoint x="-27983" y="122380" z="-3722" />
++		<banishPoint x="-27814" y="121257" z="-3722" />
+ 	</clanHall>
+ </list>
+\ No newline at end of file
