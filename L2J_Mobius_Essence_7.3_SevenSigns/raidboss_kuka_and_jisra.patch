@@ -1,0 +1,316 @@
+Subject: [PATCH] raidboss kuka and jisra
+---
+Index: L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/34173-1.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/34173-1.html b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/34173-1.html
+new file mode 100644
+--- /dev/null	(revision 518f016f312566002565f8056ce3c6045084eef2)
++++ b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/34173-1.html	(revision 518f016f312566002565f8056ce3c6045084eef2)
+@@ -0,0 +1,7 @@
++<html><body>Undercover Agent Khamin:<br>
++Our scouts have brought information that Jisra can be seen only short periods of time. In 30 minutes before every even hour a secret pathway is opened, it won't be closed for 30 minutes. If you follow the way and kill Escorts, Escort Captain Cooca will come to find out what's going on.<br>
++Keep in mind you have to kill Cooca first. If you can defeat him, you can defeat Jisra.<br>
++Cooca has cast a powerful protection spell on Jisra, so without killing Cooca you most likely fail to deal with Jisra.<br>
++Our mages say that after Cooca's death his spell will be unleashed and sweep away from the camp everybody who wasn't in the combat. So good luck.<br>
++<Button ALIGN=LEFT ICON="RETURN" action="bypass -h npc_%objectId%_Quest Kuka 34173.html">Back</Button>
++</body></html>
+\ No newline at end of file
+Index: L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/34173-2.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/34173-2.html b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/34173-2.html
+new file mode 100644
+--- /dev/null	(revision 518f016f312566002565f8056ce3c6045084eef2)
++++ b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/34173-2.html	(revision 518f016f312566002565f8056ce3c6045084eef2)
+@@ -0,0 +1,6 @@
++<html><body>Undercover Agent Khamin:<br>
++Nobody can go through the secret pathway now. <br>
++It's too dangerous to let the way be opened all the time, our enemies are surely going to see it and block it, or make an ambush.<br>
++Come back later when I can open the pathway safely.
++<Button ALIGN=LEFT ICON="RETURN" action="bypass -h npc_%objectId%_Quest Kuka 34173.html">Back</Button>
++</body></html>
+\ No newline at end of file
+Index: L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/34173.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/34173.html b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/34173.html
+new file mode 100644
+--- /dev/null	(revision 518f016f312566002565f8056ce3c6045084eef2)
++++ b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/34173.html	(revision 518f016f312566002565f8056ce3c6045084eef2)
+@@ -0,0 +1,8 @@
++<html><body>Undercover Agent Khamin:<br>
++Sel Mahums have occupied Abandoned Camp.<br>
++The camp is guarded by Escorts, their leaders are an elite warrior called Jisra and Escort Captain Cooca. The bastards  are getting very strong and dangerous.<br>
++I have to ask for your help. We need to sound out the situation, so do it using a secret pathway.<br>
++Be careful,the camp is guarded not only by the men but also powerful magic that can teleport you anywhere. Cooca is the one who cast it but even if you kill him spell won't be broken. So you aren't going to come back the same way you travel there,that's why you need to prepare a Scroll of Escape.<br>
++<Button ALIGN=LEFT ICON="NORMAL" action="bypass -h npc_%objectId%_Quest Kuka 34173-1.html">Ask about the fight with Jisra</Button>
++<Button ALIGN=LEFT ICON="NORMAL" action="bypass -h npc_%objectId%_Quest Kuka teleport"><font color="LEVEL">Go to a secret pathway</font></Button>
++</body></html>
+\ No newline at end of file
+Index: L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/Kuka.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/Kuka.java b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/Kuka.java
+new file mode 100644
+--- /dev/null	(revision 518f016f312566002565f8056ce3c6045084eef2)
++++ b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/scripts/ai/bosses/Kuka/Kuka.java	(revision 518f016f312566002565f8056ce3c6045084eef2)
+@@ -0,0 +1,195 @@
++package ai.bosses.Kuka;
++
++import ai.AbstractNpcAI;
++import org.l2jmobius.commons.threads.ThreadPool;
++import org.l2jmobius.commons.time.SchedulingPattern;
++import org.l2jmobius.gameserver.data.SpawnTable;
++import org.l2jmobius.gameserver.data.xml.NpcData;
++import org.l2jmobius.gameserver.data.xml.SkillData;
++import org.l2jmobius.gameserver.enums.RaidBossStatus;
++import org.l2jmobius.gameserver.instancemanager.DBSpawnManager;
++import org.l2jmobius.gameserver.instancemanager.ZoneManager;
++import org.l2jmobius.gameserver.model.EffectList;
++import org.l2jmobius.gameserver.model.Location;
++import org.l2jmobius.gameserver.model.Spawn;
++import org.l2jmobius.gameserver.model.actor.Creature;
++import org.l2jmobius.gameserver.model.actor.Npc;
++import org.l2jmobius.gameserver.model.actor.Player;
++import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
++import org.l2jmobius.gameserver.model.skill.BuffInfo;
++import org.l2jmobius.gameserver.model.zone.ZoneType;
++import org.l2jmobius.gameserver.model.zone.type.NoRestartZone;
++import org.l2jmobius.gameserver.network.NpcStringId;
++import org.l2jmobius.gameserver.network.serverpackets.ExShowScreenMessage;
++
++import java.util.Collection;
++
++public class Kuka extends AbstractNpcAI
++{
++
++    private static final int KHAMIN = 34173;
++
++    private static final int JISRA = 25925;
++    private static final int KUKA = 25926;
++
++    private static final NoRestartZone zone = ZoneManager.getInstance().getZoneByName("kuka_no_restart", NoRestartZone.class);
++
++    private static final Location KUKA_LOC = new Location(-58974, 135294, -2392);
++    private static final Location JISRA_LOC = new Location(-60496, 137347, -2392);
++    private static final Location TELEPORT_START_LOC = new Location(-57406,136429,-2396);
++    private static final Location TELEPORT_OUT_LOC = new Location(-48363, 140230, -2947);
++
++    private static final int PROOF_OF_COURAGE = 48185;
++
++    private static final String ENTER_ZONE_PATTERN = "30-50 */2 * * *";
++    private static final String KUKA_RESPAWN_PATTERN = "50 */2 * * *";
++    private static final String KUKA_DESPAWN_PATTERN = "0 */1 * * *";
++    private static final String JISRA_DESPAWN_PATTERN = "30 */1 * * *";
++
++    private final SchedulingPattern _enterZonePattern;
++    private final SchedulingPattern _respawnKukaPattern;
++    private final SchedulingPattern _despawnKukaPattern;
++    private final SchedulingPattern _despawnJisraPattern;
++
++    private Kuka()
++    {
++        addFirstTalkId(KHAMIN);
++        addEnterZoneId(zone.getId());
++        addAttackId(JISRA);
++        addKillId(KUKA, JISRA);
++
++        _enterZonePattern =  new SchedulingPattern(ENTER_ZONE_PATTERN);
++        _respawnKukaPattern = new SchedulingPattern(KUKA_RESPAWN_PATTERN);
++        _despawnKukaPattern = new SchedulingPattern(KUKA_DESPAWN_PATTERN);
++        _despawnJisraPattern = new SchedulingPattern(JISRA_DESPAWN_PATTERN);
++
++        ThreadPool.scheduleAtFixedRate(() -> onSpawn(KUKA, KUKA_LOC, _respawnKukaPattern), _respawnKukaPattern.getDelayToNextFromNow(), 1000 * 60 * 60 * 2);
++        ThreadPool.scheduleAtFixedRate(() -> onDeSpawn(KUKA), _despawnKukaPattern.getDelayToNextFromNow(), 1000 * 60 * 60 * 2);
++        ThreadPool.scheduleAtFixedRate(() -> onDeSpawn(JISRA), _despawnJisraPattern.getDelayToNextFromNow(), 1000 * 60 * 60 * 2);
++    }
++
++    private boolean canMoveToZone(Player player)
++    {
++        return _enterZonePattern.match(System.currentTimeMillis()) || isAlive(KUKA) || player.getEffectList().isAffectedBySkill(PROOF_OF_COURAGE);
++    }
++
++    @Override
++    public String onEvent(String event, Npc npc, Player player)
++    {
++        switch (event)
++        {
++            case "teleport":
++                if (canMoveToZone(player))
++                {
++                    player.teleToLocation(TELEPORT_START_LOC);
++                    return null;
++                } else
++                {
++                    return "34173-2.html";
++                }
++        }
++
++        return event;
++    }
++
++    private void onDeSpawn(int bossId)
++    {
++        for (Spawn spawn : SpawnTable.getInstance().getSpawns(bossId))
++        {
++            for (Npc monster : spawn.getSpawnedNpcs())
++            {
++                if (!monster.isDead())
++                {
++                    DBSpawnManager.getInstance().deleteSpawn(spawn, true);
++                    monster.deleteMe();
++                }
++            }
++        }
++    }
++
++    private Npc onSpawn(int id, Location location, SchedulingPattern respawnPattern)
++    {
++        final NpcTemplate template = NpcData.getInstance().getTemplate(id);
++        try
++        {
++            if (template != null)
++            {
++                final Spawn spawn = new Spawn(template);
++                spawn.setXYZ(location);
++                spawn.setRespawnPattern(respawnPattern);
++                return DBSpawnManager.getInstance().addNewSpawn(spawn, true);
++            }
++        }
++        catch (Exception e)
++        {
++            LOGGER.warning(getClass().getSimpleName() + ": Caused an exception " + e.getMessage());
++        }
++
++        return null;
++    }
++
++    @Override
++    public String onAttack(Npc npc, Player attacker, int damage, boolean isSummon)
++    {
++        //todo jisra casting self buff, i don't know which one
++        return super.onAttack(npc, attacker, damage, isSummon);
++    }
++
++    private boolean isAlive(int npc)
++    {
++        RaidBossStatus status = DBSpawnManager.getInstance().getStatus(npc);
++        return status == RaidBossStatus.ALIVE || status == RaidBossStatus.COMBAT;
++    }
++
++    @Override
++    public String onEnterZone(Creature creature, ZoneType zone)
++    {
++        if (creature.isPlayer() && !canMoveToZone((Player) creature))
++        {
++            creature.teleToLocation(TELEPORT_OUT_LOC);
++            creature.sendMessage("Nobody can go through the secret pathway now.");
++        }
++
++        return super.onEnterZone(creature, zone);
++    }
++
++    @Override
++    public String onKill(Npc npc, Player killer, boolean isSummon)
++    {
++        int npcId = npc.getTemplate().getId();
++        if (npcId == KUKA)
++        {
++            npc.broadcastPacket(new ExShowScreenMessage(NpcStringId.S1_ONLY_YOU_CAN_CHALLENGE_JISRA, 2, 5000, true, killer.getName()));
++
++            EffectList effectList = killer.getEffectList();
++            effectList.add(new BuffInfo(npc, killer, SkillData.getInstance().getSkill(PROOF_OF_COURAGE, 1), false, null, null));
++
++            Collection<Creature> charactersInside = zone.getCharactersInside();
++            for (Creature creature : charactersInside)
++            {
++                if (creature.isPlayer() && !creature.getEffectList().isAffectedBySkill(PROOF_OF_COURAGE))
++                {
++                    creature.teleToLocation(TELEPORT_OUT_LOC);
++                }
++            }
++
++            Npc jisra = onSpawn(JISRA, JISRA_LOC, null);
++            addAttackPlayerDesire(jisra, killer);
++
++        }
++        else if (npcId == JISRA)
++        {
++            Npc jisra = DBSpawnManager.getInstance().getNpc(JISRA);
++            DBSpawnManager.getInstance().deleteSpawn(jisra.getSpawn(), true);
++            jisra.deleteMe();
++        }
++
++        return super.onKill(npc, killer, isSummon);
++    }
++
++    public static void main(String[] args)
++    {
++        new Kuka();
++    }
++
++}
+\ No newline at end of file
+Index: L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/spawns/RaidbossSpawns.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/spawns/RaidbossSpawns.xml b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/spawns/RaidbossSpawns.xml
+--- a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/spawns/RaidbossSpawns.xml	(revision ecddb42721ce93616c46d7025d6e8b4ed07ce4bd)
++++ b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/spawns/RaidbossSpawns.xml	(revision 518f016f312566002565f8056ce3c6045084eef2)
+@@ -44,7 +44,6 @@
+ 			<npc id="25959" x="-17374" y="184759" z="-3984" heading="5000" dbSave="true" dbName="Heeder" respawnPattern="0 1-23/2 * * *" />
+ 			<!-- 85 Elite Raid Boss -->
+ 			<npc id="25453" x="99688" y="110600" z="-3706" heading="7391" dbSave="true" dbName="Meanas Anor" respawnPattern="0 1-23/2 * * *" />
+-			<npc id="25926" x="-58974" y="135294" z="-2392" heading="46378" dbSave="true" dbName="Kuka" respawnTime="2hour" respawnRandom="0hour" />
+ 			<!-- 90 Elite Raid Boss -->
+ 			<npc id="25234" x="-58136" y="139832" z="-2589" heading="51808" dbSave="true" dbName="Ancient Weird Drake" respawnPattern="0 1-23/2 * * *" />
+ 			<npc id="25415" x="-96088" y="102040" z="-3496" heading="36885" dbSave="true" dbName="Nakondas" respawnPattern="0 1-23/2 * * *" />
+Index: L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/stats/skills/48100-48199.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/stats/skills/48100-48199.xml b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/stats/skills/48100-48199.xml
+--- a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/stats/skills/48100-48199.xml	(revision ecddb42721ce93616c46d7025d6e8b4ed07ce4bd)
++++ b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/stats/skills/48100-48199.xml	(revision 518f016f312566002565f8056ce3c6045084eef2)
+@@ -642,6 +642,7 @@
+ 	<skill id="48185" toLevel="1" name="Proof of Courage">
+ 		<!-- A proof needed to fight Sel Mahum Jisra. -->
+ 		<icon>icon.skill30530</icon>
++		<abnormalTime>600</abnormalTime>
+ 		<operateType>A1</operateType>
+ 	</skill>
+ 	<skill id="48186" toLevel="1" name="Aqua Tornado">
+Index: L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/zones/no_restart.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/zones/no_restart.xml b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/zones/no_restart.xml
+--- a/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/zones/no_restart.xml	(revision ecddb42721ce93616c46d7025d6e8b4ed07ce4bd)
++++ b/L2J_Mobius_Essence_7.3_SevenSigns/dist/game/data/zones/no_restart.xml	(revision 518f016f312566002565f8056ce3c6045084eef2)
+@@ -1,6 +1,13 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/zones.xsd">
+ 	<!-- No Restart Zones -->
++	<zone name="kuka_no_restart" type="NoRestartZone" shape="NPoly" minZ="-2500" maxZ="-2000">
++        <stat name="restartAllowedTime" val="600" />
++		<node X="-60884" Y="138448" />
++		<node X="-61224" Y="136376" />
++		<node X="-57288" Y="134872" />
++		<node X="-57096" Y="137000" />
++	</zone>
+ 	<zone name="zaken_no_restart" type="NoRestartZone" shape="NPoly" minZ="-4815" maxZ="-315"> <!-- 21_24 -->
+ 		<stat name="restartTime" val="1800" />
+ 		<stat name="restartAllowedTime" val="600" />
